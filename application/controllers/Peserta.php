@@ -14,8 +14,8 @@ class Peserta extends CI_Controller {
 	{
 		$data['judul'] = 'Dashboard';
 		$data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
-		$this->load->view('user/user_header',$data);
-		$this->load->view('user/index' ,$data);
-		$this->load->view('user/user_footer', $data);
+		$this->load->view('peserta/peserta_header',$data);
+		$this->load->view('peserta/index' ,$data);
+		$this->load->view('peserta/peserta_footer', $data);
 	}
 }

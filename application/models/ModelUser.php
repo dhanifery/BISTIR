@@ -33,19 +33,31 @@ class ModelUser extends CI_Model
          'name' =>  $post['name'],
          'email' => $post['email'],
          'image' => $post['image'],
+         'role_id' => $post['role_id'],
          'password' => $post['password'],
        ];
-       $this->db->insert('instr',$params);
+       $this->db->insert('user',$params);
 
      }
 
      public function edit($post)
      {
        $params = [
-            'name' =>  $post['name'],
+           'name' =>  $post['name'],
            'email' => $post['email'],
-           'image' => $post['image'],
            'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+           'image' => $post['image'],
+       ];
+       $this->db->where('id', $post['id']);
+       $this->db->update('user',$params);
+     }
+
+     public function edit_user($post)
+     {
+       $params = [
+           'name' =>  $post['name'],
+           'email' => $post['email'],
+           'role_id' => $post['role_id'],
        ];
        $this->db->where('id', $post['id']);
        $this->db->update('user',$params);

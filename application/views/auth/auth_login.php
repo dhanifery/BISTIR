@@ -1,6 +1,6 @@
 
 <body>
-     <div class="container">
+     <div class="container"> 
           <div class="forms-container">
                <div class="signin-signup">
                     <form action="<?= base_url('Auth/Proses');?>" method="post" class="sign-in-form">
@@ -24,7 +24,7 @@
                          <h2 class="title">Sign up</h2>
                          <div class="input-field">
                               <i class="fas fa-user"></i>
-                              <input type="text" placeholder="Username" name="email" autocomplete="off"/>
+                              <input type="text" placeholder="Username" name="name" autocomplete="off"/>
                          </div>
                          <div class="input-field">
                               <i class="fas fa-envelope"></i>

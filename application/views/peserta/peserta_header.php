@@ -25,17 +25,17 @@
                     </div>
                     <div class="sidebar">
                          <p>Home</p>
-                         <a href="<?= base_url('Admin'); ?>"><span class="material-icons-sharp">grid_view</span>
+                         <a href="#" class="active"><span class="material-icons-sharp">grid_view</span>
                               <h3>Dashboard</h3>
                          </a>
                          <p>Master Data</p>
-                         <a href="<?= base_url('Crud_peserta'); ?>"><span class="material-icons-sharp">person_outline</span>
+                         <a href="#"><span class="material-icons-sharp">person_outline</span>
                               <h3>Data Peserta</h3>
                          </a>
-                         <a href="<?= base_url('Crud_instruktur'); ?>"><span class="material-icons-sharp">group</span>
+                         <a href="#"><span class="material-icons-sharp">group</span>
                               <h3>Data Instruktur</h3>
                          </a>
-                         <a href="<?= base_url('Crud_admin'); ?>"><span class="material-icons-sharp">person_outline</span>
+                         <a href="#"><span class="material-icons-sharp">person_outline</span>
                               <h3>Data Admin</h3>
                          </a>
                          <a href="#"><span class="material-icons-sharp">category</span>
@@ -50,7 +50,7 @@
                               <h3>Laporan Transaksi</h3>
                          </a>
                          <p>User</p>
-                         <a href="<?= base_url('User'); ?>"><span class="material-icons-sharp">groups</span>
+                         <a href="#"><span class="material-icons-sharp">groups</span>
                               <h3>Data User</h3>
                          </a>
                          <a href="<?= base_url('Auth/logout');?>"><span class="material-icons-sharp">logout</span>
@@ -62,4 +62,4 @@
                <!-- MAIN START -->
 
                          <main>
-                              <h1><?= $judul; ?></h1>
+                              <h1>Dashboard</h1>
