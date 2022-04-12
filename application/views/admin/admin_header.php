@@ -38,9 +38,9 @@
                          <a href="<?= base_url('Crud_admin'); ?>"><span class="material-icons-sharp">person_outline</span>
                               <h3>Data Admin</h3>
                          </a>
-                         <a href="#"><span class="material-icons-sharp">category</span>
+                         <a href="<?= base_url('Paket'); ?>"><span class="material-icons-sharp">category</span>
                               <h3>Data Paket</h3>
-                              <span class="message-count">20</span>
+                              <!-- <span class="message-count">20</span> -->
                          </a>
                          <p>Data Transaksi</p>
                          <a href="#"><span class="material-icons-sharp">insights</span>

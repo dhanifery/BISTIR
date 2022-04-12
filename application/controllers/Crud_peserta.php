@@ -68,7 +68,7 @@ class Crud_peserta extends CI_Controller {
 
 
     // inisialisasi
-     $this->pagination->initialize($config);
+    $this->pagination->initialize($config);
 
      $data['judul'] ='Data Peserta';
      $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();

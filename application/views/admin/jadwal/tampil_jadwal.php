@@ -1,76 +1,13 @@
 
-
-               <!-- INSIGHTS START -->
-               <div class="insights">
-                    <!-- SALES START -->
-                    <div class="sales">
-                         <a href="<?= base_url('User'); ?>"> <span class="material-icons-sharp">group</span></a>
-                         <div class="middle">
-                              <div class="left">
-                                   <h3>Jumlah User</h3>
-                                   <h1><?= $this->ModelUser->cekData(['role_id'])->num_rows(); ?></h1>
-                              </div>
-                              <div class="progress">
-                                   <svg>
-                                        <circle cx='38' cy='38' r='36'></circle>
-                                   </svg>
-                                   <div class="number">
-                                        <p>81%</p>
-                                   </div>
-                              </div>
-                         </div>
-                         <small class="text-muted">Last 24 Hours</small>
-                    </div>
-
-                    <!-- SALES END -->
-
-                    <!-- EXPENSES START -->
-                    <div class="expenses">
-                         <a href="<?= base_url('Transaksi'); ?>"><span class="material-icons-sharp">analytics</span></a>
-                         <div class="middle">
-                              <div class="left">
-                                   <h3>Scan Data</h3>
-                                   <h1><?= $this->ModelTransaksi->cekData(['id_trans'])->num_rows(); ?></h1>
-                              </div>
-                              <div class="progress">
-                                   <svg>
-                                        <circle cx='38' cy='38' r='36'></circle>
-                                   </svg>
-                                   <div class="number">
-                                        <p>62%</p>
-                                   </div>
-                              </div>
-                         </div>
-                         <small class="text-muted">Last 24 Hours</small>
-                    </div>
-                    <!-- EXPENSES END -->
-
-                    <!-- INCOME START -->
-                    <div class="income">
-                         <a href="<?= base_url('Jadwal'); ?>"><span class="material-icons-sharp">directions_car</span></a>
-                         <div class="middle">
-                              <div class="left">
-                                   <h3>Schedule</h3>
-                                   <h1><?= $this->ModelJadwal->cekData(['id_jadwal'])->num_rows(); ?></h1>
-                              </div>
-                              <div class="progress">
-                                   <svg>
-                                        <circle cx='38' cy='38' r='36'></circle>
-                                   </svg>
-                                   <div class="number">
-                                        <p>44%</p>
-                                   </div>
-                              </div>
-                         </div>
-                         <small class="text-muted">Last 24 Hours</small>
-                    </div>
-                    <!-- INCOME END -->
-
-               </div>
-               <!-- INSIGHTS END -->
-
-               <!-- RECENT ORDERS START -->
-               <div class="recent-orders">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+     <head>
+          <meta charset="utf-8">
+          <title></title>
+          <link rel="stylesheet" href="<?= base_url('assets/css/admin/tampil.css') ?>">
+     </head>
+     <body>
+          <div class="recent-orders">
                <h2><?= $subjudul; ?></h2>
                <div class="tambahdata">
                     <div class="row-input">
@@ -83,6 +20,7 @@
                               </form>
                          </div>
                     </div>
+                    <button  id="modalBtn" class="button" >Tambah Data</button>
                </div>
 
                <table>
@@ -126,9 +64,8 @@
                               </tr>
                               <?php } ?>
                          <?php } ?>
-
                     <?php }?>
-
+                        
                     </tbody>
                </table>
                <h3>Results : <?=$total_rows; ?></h3>
@@ -180,7 +117,11 @@
                     <?php echo form_close() ?>
                </div>
           </div>
-                    <!-- RECENT ORDERS END -->
+
+     </body>
+</html>
+                    <!-- MODAL END -->
+
                </main>
                <!-- MAIN END -->
                <!-- RIGHT SIDE START-->

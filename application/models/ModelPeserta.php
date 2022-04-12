@@ -1,7 +1,4 @@
 <?php
-/**
- *
- */
 class ModelPeserta extends CI_Model
 {
 

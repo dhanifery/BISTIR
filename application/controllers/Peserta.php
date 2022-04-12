@@ -17,5 +17,6 @@ class Peserta extends CI_Controller {
 		$this->load->view('peserta/peserta_header',$data);
 		$this->load->view('peserta/index' ,$data);
 		$this->load->view('peserta/peserta_footer', $data);
+
 	}
 }

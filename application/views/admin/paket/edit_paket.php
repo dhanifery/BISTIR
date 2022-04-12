@@ -10,20 +10,20 @@
                <h2><?= $subjudul ?></h2>
                <div class="edit-form">
                     <div class="form-input">
-                         <form action="<?= site_url('User/proses') ?>"  method="post">
+                         <form action="<?= site_url('Paket/proses') ?>"  method="post">
                               <div class="form-group">
-                                   <label>Name *</label>
+                                   <label>Nama Paket *</label>
                                    <input type="hidden" name="id" value="<?= $row->id ?>">
-                                   <input type="text" name="name" value="<?= $row->name ?>" autocomplete="off" autofocus>
-                                   <span class="error-validasi"><?php echo form_error('name'); ?></span>
+                                   <input type="text" name="nama" value="<?= $row->nama ?>" autocomplete="off" autofocus>
+                                   <span class="error-validasi"><?php echo form_error('nama'); ?></span>
                               </div>
                               <div class="form-group">
-                                   <label>email *</label>
-                                   <input type="text" name="email" value="<?= $row->email ?>" autocomplete="off" autofocus>
+                                   <label>Harga *</label>
+                                   <input type="text" name="harga" value="<?= $row->harga ?>" autocomplete="off" autofocus>
                               </div>
                               <div class="form-group">
-                                        <label>Role Id *</label>
-                                   <input type="text" name="role_id" value="<?= $row->role_id ?>" autocomplete="off" autofocus>
+                                        <label>Banyak Pertemuan *</label>
+                                   <input type="text" name="byk_pertemuan" value="<?= $row->byk_pertemuan ?>" autocomplete="off" autofocus>
 
                               </div>
                               <div class="form-group">
@@ -32,7 +32,7 @@
                          </div>
                     </div>
                     <div class="gambar">
-                         <img src="<?= base_url('assets/images/undraw_newspaper_re_syf5.svg');?> " alt="">
+                         <img src="<?= base_url('assets/images/undraw_futuristic_interface_re_0cm6.svg');?> " alt="">
                     </div>
                </div>
           </div>
