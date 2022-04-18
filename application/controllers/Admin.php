@@ -70,7 +70,7 @@ class Admin extends CI_Controller {
 		$data['jadwal'] = $this->ModelJadwal->cekData(['id_jadwal' => $this->session->userdata('id_jadwal')])->row_array();
 		$data['start'] = $this->uri->segment(3);
 		$data['jadwal'] = $this->ModelJadwal->tampil_data($config['per_page'],$data['start'],$data['keyword'])->result_array();
-		$data['Jadwal'] = $this->ModelJadwal->get_relasi()->result();
+		$data['row'] = $this->ModelJadwal->get_relasi();
 		$this->load->view('admin/admin_header' ,$data);
 		$this->load->view('admin/index',$data);
 		$this->load->view('admin/admin_footer', $data);

@@ -35,7 +35,7 @@
                               </form>
                          </div>
                     </div>
-                    <div class="gambar">
+                    <div class="img">
                          <img src="<?= base_url('assets/images/undraw_push_notifications_re_t84m.svg');?> " alt="">
                     </div>
                </div>

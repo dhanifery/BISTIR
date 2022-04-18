@@ -31,6 +31,7 @@
                               <th>Email</th>
                               <th>Jenis Kelamin</th>
                               <th>Honor per jam</th>
+                              <th>Image</th>
                               <th class="text-center">Option</th>
                          </tr>
                     </thead>
@@ -45,7 +46,7 @@
                               </tr>
                          <?php endif; ?>
                          <?php foreach ($instruktur as $instr){
-                              ?>
+                              ?> 
                               <tr>
                                    <td><?php echo ++$start?></td>
                                    <?php    $instr->id_instr?>
@@ -53,7 +54,12 @@
                                    <td><?php echo $instr->email_instr?></td>
                                    <td width="120px;"><?php echo $instr->JK_instr?></td>
                                    <td><?php echo $instr->honor_per_jam?></td>
-                                   <td class="text-center">
+                                   <td width="80px;">
+                                        <picture>
+                                             <img style=" height: 60px; width:100%; border-radius:4px; border: 2px solid;" src="<?= base_url('assets/images/upload/'.$instr->image)?>">
+                                        </picture>                                 
+                                   </td>
+                                   <td class="text-center" style="height: 5rem;">
                                         <a href="<?=site_url('Crud_instruktur/edit/'.$instr->id_instr) ?>" class="btn-edit">
                                              <span class="material-icons-sharp">edit</span>
                                         </a>
@@ -107,6 +113,10 @@
                                    <label>Honor Per Jam *</label>
                                    <input type="text" name="honor_per_jam" value=""  autocomplete="off">
                                    <span class="error-validasi"><?php echo form_error('honor_per_jam'); ?></span>
+                              </div>
+                              <div class="form-group">
+                                   <label>Image *</label>
+                                   <input type="file" name="image" value=""  autocomplete="off">
                               </div>
                               <div class="form-group">
                                    <label>Jenis Kelamin *</label>

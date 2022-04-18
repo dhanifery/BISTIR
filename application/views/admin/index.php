@@ -97,38 +97,30 @@
                          </tr>
                     </thead>
                     <tbody>
-                    <?php 
-                    
-                    if (empty($jadwal)) { ?>
-                         <tr>
-                         <td colspan="5" >
-                              <div class="alert">
-                              <h3>Data not found!</h3>
-                              </div>
-                         </td>
-                         </tr>
-                         <?php } else { ?>
-                              <?php foreach ($Jadwal as $j){
-                         ?>
-                              <?php foreach ($jadwal as $J){
-                                   ?>
+                    <?php if (empty($jadwal)) {?>
                               <tr>
-                                   <td><?php echo ++$start?></td>
-                                   <td><?php echo $j->kode_jadwal?></td>
-                                   <td><?php echo $j->instr_name?></td>
-                                   <td><?php echo $j->peserta_name?></td>
-                                   <td><?php echo $j->status?></td>
-                                   <td class="text-center">
-                                             <a href="<?=site_url('Jadwal/edit/'.$J['id_jadwal']) ?>" class="btn-edit">
-                                                  <span class="material-icons-sharp">edit</span>
-                                             </a>
+                                   <td colspan="6" >
+                                        <div class="alert">
+                                             <h3>Data not found!</h3>
+                                        </div>
                                    </td>
-                              </tr>
-                              <?php } ?>
-                         <?php } ?>
-
-                    <?php }?>
-
+                              </tr> 
+                         <?php } else { ?>
+                         <?php foreach($row->result() as $key => $data) { ?>
+                         <tr>
+                              <td><?php echo ++$start?></td>
+                              <td><?php echo $data->kode_jadwal?></td>
+                              <td><?php echo $data->instr_name?></td>
+                              <td><?php echo $data->peserta_name?></td>
+                              <td><?php echo $data->status_nama?></td>
+                              <td class="text-center">
+                                   <a href="<?=site_url('Jadwal/edit/'.$data->id_jadwal) ?>" class="btn-edit">
+                                        <span class="material-icons-sharp">edit</span>
+                                   </a>
+                              </td>
+                         </tr>
+                        <?php } ?>
+                        <?php } ?>
                     </tbody>
                </table>
                <h3>Results : <?=$total_rows; ?></h3>

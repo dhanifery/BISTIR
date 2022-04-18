@@ -6,7 +6,7 @@ class ModelInstruktur extends CI_Model
 {
 
     function index()
-    {
+    { 
      return $this->db->get('instruktur');
 
     }
@@ -39,13 +39,15 @@ class ModelInstruktur extends CI_Model
      {
        $params = [
             'username' =>  $post['username'],
-           'email_instr' => $post['email_instr'],
            'alamat_instr' => $post['alamat_instr'],
            'telp_instr' => $post['telp_instr'],
            'TTL_instr' => $post['TTL_instr'],
            'JK_instr' => $post['JK_instr'],
            'honor_per_jam' => $post['honor_per_jam'],
        ];
+       if($post['image'] != null) {
+        $params['image'] = $post['image'];
+      }   
        $this->db->where('id_instr', $post['id_instr']);
        $this->db->update('instruktur',$params);
      }

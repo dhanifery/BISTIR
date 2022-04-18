@@ -65,6 +65,6 @@
      <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
      <script  src="<?= base_url('assets/js/index.js') ?>"></script>
      <script  src="<?= base_url('assets/js/main.js') ?>"></script>
-
+     <script src="<?= base_url('assets/js/navbar.js')?>"></script>
 </body>
 </html>

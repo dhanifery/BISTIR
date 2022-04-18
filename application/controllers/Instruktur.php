@@ -16,5 +16,6 @@ class Instruktur extends CI_Controller {
 		$data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
 		$this->load->view('instruktur/instruktur_header',$data);
 		$this->load->view('instruktur/index' ,$data);
+		$this->load->view('instruktur/instruktur_footer' ,$data);
 	}
 }

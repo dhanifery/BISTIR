@@ -6,7 +6,6 @@ class Crud_instruktur extends CI_Controller {
 	{
 		parent::__construct();
 		is_logged_in();
-          $this->load->helper('url');
 		$this->load->model(['ModelUser','ModelInstruktur']);
 
 
@@ -138,6 +137,17 @@ class Crud_instruktur extends CI_Controller {
 
             $config['attributes'] = array('class' => 'page-link');
 
+
+            $config['upload_path']          = './assets/images/upload/';
+            $config['allowed_types']        = 'jpg|png|jpeg|PNG';
+            $config['max_size']             = '4048';
+            $config['max_width']            = '4024';
+            $config['max_height']           = '4068';
+            $config['file_name'] = 'img' . time();
+
+
+            $this->load->library('upload', $config);
+
            if ($this->form_validation->run()== false)
             {
                  $this->pagination->initialize($config);
@@ -151,23 +161,22 @@ class Crud_instruktur extends CI_Controller {
                  $this->load->view('admin/admin_footer', $data);
             }
             else {
-              $username=$this->input->post('username');
-              $email_instr=$this->input->post('email_instr');
-              $alamat_instr=$this->input->post('alamat_instr');
-              $telp_instr=$this->input->post('telp_instr');
-              $TTL_instr=$this->input->post('TTL_instr');
-              $JK_instr=$this->input->post('JK_instr');
-              $honor_per_jam=$this->input->post('honor_per_jam');
-
-              $data = array(
-                'username' => $username,
-                'email_instr' => $email_instr,
-                'alamat_instr' => $alamat_instr,
-                'telp_instr' => $telp_instr,
-                'TTL_instr' => $TTL_instr,
-                'JK_instr' => $JK_instr,
-                'honor_per_jam' => $honor_per_jam
-              );
+              if ($this->upload->do_upload('image')) {
+                $image = $this->upload->data();
+                $image = $image['file_name'];
+              } else {
+                  $image = ''; 
+              }
+              $data = [
+                'username' => $this->input->post('username', true),
+                'email_instr' => $this->input->post('email_instr', true),
+                'alamat_instr' => $this->input->post('alamat_instr', true),
+                'telp_instr' => $this->input->post('telp_instr', true),
+                'TTL_instr' => $this->input->post('TTL_instr',true),
+                'JK_instr' => $this->input->post('JK_instr', true),
+                'honor_per_jam' => $this->input->post('honor_per_jam', true),
+                'image' => $image
+              ];
               $this->ModelInstruktur->input_data($data, 'instruktur');
               if ($this->db->affected_rows() > 0 ) {
                    echo "<script>alert('Data Berhasil disimpan');</script>";
@@ -201,19 +210,50 @@ class Crud_instruktur extends CI_Controller {
          echo "<script>window.location='".site_url('Crud_instruktur')."';</script>";
        }
      }
+
+
+
      public function proses()
      {
-          $post = $this->input->post(null, TRUE);
-    if (isset($_POST['add'])) {
-      $this->ModelInstruktur->add($post);
-    } else if (isset($_POST['edit'])) {
-      $this->ModelInstruktur->edit($post);
+      $config['upload_path']          = './assets/images/upload/';
+      $config['allowed_types']        = 'jpg|png|jpeg|PNG|jfif';
+      $config['max_size']             = '4048';
+      $config['file_name'] = 'img' . time();
+
+
+      $this->load->library('upload', $config);
+      $post = $this->input->post(null, TRUE);
+      if (isset($_POST['add'])) {
+        $this->ModelInstruktur->add($post);
+      } else if (isset($_POST['edit'])) {
+        if (@$_FILES['image'] != null) {
+          if ($this->upload->do_upload('image')) {
+            $post['image'] = $this->upload->data('file_name');
+            $this->ModelInstruktur->edit($post);
+            if ($this->db->affected_rows() > 0 ) {
+              echo"<script>alert('Data Berhasil diubah');</script>";
+            }
+            echo "<script>window.location='".site_url('Crud_instruktur')."';</script>";
+          }else {
+            $post['image'] = null;
+            $this->ModelInstruktur->edit($post); 
+          if ($this->db->affected_rows() > 0 ) {
+            echo"<script>alert('Data Berhasil diubah');</script>";
+          }
+          echo "<script>window.location='".site_url('Crud_instruktur')."';</script>";;
+          }
+        }else {
+          $post['image'] = null;
+          $this->ModelInstruktur->edit($post); 
+          if ($this->db->affected_rows() > 0 ) {
+            echo"<script>alert('Data Berhasil diubah');</script>";
+          }
+          echo "<script>window.location='".site_url('Crud_instruktur')."';</script>";
+        }
+
+      }
+
     }
-    if ($this->db->affected_rows() > 0 ) {
-      echo "<script>alert('Data berhasil disimpan');</script>";
-    }
-    echo "<script>window.location='".site_url('Crud_instruktur')."';</script>";
-     }
 
 
      // hapus data instr

@@ -22,7 +22,7 @@ class User extends CI_Controller {
 		   $data['keyword']= $this->session->set_userdata('keyword');
 		}
 
-		// config
+		// config 
 
 		 $this->db->like('name',$data['keyword']);
 		 $this->db->from('user');
@@ -67,14 +67,14 @@ class User extends CI_Controller {
 		$data['judul'] ='Data User';
 		$data['subjudul'] ='List User';
 		$data['form'] ='Form User';
-	     $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
+	     	$data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
 		$data['start'] = $this->uri->segment(3);
 		$data['anggota'] = $this->ModelUser->tampil_data($config['per_page'],$data['start'],$data['keyword'])->result_array();
 
-	     $this->load->view('admin/admin_header',$data);
-	     $this->load->view('admin/admin/tampil_user',$data);
-	     $this->load->view('admin/admin_footer', $data);
-	}
+		$this->load->view('admin/admin_header',$data);
+		$this->load->view('admin/admin/tampil_user',$data);
+		$this->load->view('admin/admin_footer', $data);
+		}
 	function tambahuser()
 	   {
 		 $this->form_validation->set_rules('name', 'Nama', 'required|min_length[2]',
@@ -144,7 +144,7 @@ class User extends CI_Controller {
 			  $data['subjudul'] ='List User';
 			  $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
 			  $data['start'] = $this->uri->segment(3);
-			  $data['anggota'] = $this->ModelUser->tampil_data($config['per_page'],$data['start'],$data['keyword'])->result_array();
+			  $data['anggota'] = $this->ModelUser->tampil_data($config['per_page'],$data['start'],$data['keyword'])->result();
 
 
 			  $this->load->view('admin/admin_header',$data);

@@ -9,8 +9,17 @@
           <div class="recent-orders">
                <h2><?= $subjudul ?></h2>
                <div class="edit-form">
+                    <div class="gambar">
+                         <img src="<?= base_url('assets/images/upload/'.$row->image)?>" alt="">
+                         <div class="deskripsi">
+                              <h2><?=$row->username ?></h2>
+                              <p><?=$row->email_peserta ?></p>
+                         </div>
+                    </div>
                     <div class="form-input">
-                         <form action="<?= site_url('Crud_peserta/proses') ?>"  method="post">
+
+                         <?php echo form_open_multipart('Crud_peserta/proses') ?>
+                         <form action=""  method="post">
                               <div class="form-group">
                                    <label>Nama *</label>
                                    <input type="hidden" name="id_peserta" value="<?= $row->id_peserta ?>">
@@ -22,10 +31,6 @@
                                    <input type="date" name="TTL_peserta" value="<?php echo $row->TTL_peserta ?>">
                               </div>
                               <div class="form-group">
-                                   <label>Email *</label>
-                                   <input type="text" name="email_peserta" value="<?php echo $row->email_peserta ?>" autocomplete="off">
-                              </div>
-                              <div class="form-group">
                                    <label>Alamat *</label>
                                    <textarea  name="alamat_peserta" rows="2" cols="1" ><?php echo $row->alamat_peserta; ?></textarea>
                               </div>
@@ -35,21 +40,24 @@
                                    <span class="error-validasi"><?php echo form_error('no_telp'); ?></span>
                               </div>
                               <div class="form-group">
+                                   <label>Image *</label>
+                                   <input type="file" name="image" value="" autocomplete="off">
+                                   <span></span>             
+                              </div>
+                              <div class="form-group">
                                    <label>Jenis Kelamin </label>
                                    <select name="JK_peserta">
                                         <?php $JK_peserta= $row->JK_peserta ? $psr->JK_peserta  : $row->$JK_peserta   ?>
                                         <option value="Male"> - Male - </option>
-                                        <option value="Female"<?php=$JK_peserta == Female ? 'selected' : null ?>Female</option>
+                                        <option value="Female"<?=$JK_peserta == 'Female' ? 'selected' : null ?><p>- Female -</p></option>
                                    </select>
                                    <span class="error-validasi"><?php echo form_error('JK_peserta'); ?></span>
                               </div>
                               <div class="form-group">
-                                   <input type="submit" name="<?=$page?>" value="Save">
+                                   <input type="submit" name="<?=$page?>" value="Save">                      
+                              </div>
                               </form>
-                         </div>
-                    </div>
-                    <div class="gambar">
-                         <img src="<?= base_url('assets/images/undraw_firmware_re_fgdy.svg');?> " alt="">
+                              <?php echo form_close() ?>   
                     </div>
                </div>
           </div>

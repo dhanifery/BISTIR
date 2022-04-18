@@ -2,12 +2,18 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 class ModelJadwal extends CI_Model
 {
-    function index()
+    function get($id = null)
     {
-        return $this->db->get('jadwal');
+        $this->db->from('jadwal');
+        if($id != null){
+          $this->db->where('id_jadwal',$id);
+        }
+        $query = $this->db->get();
+        return $query;
+
     } 
     
-    
+     
     public function cekData($where = null)
      {
           return $this->db->get_where('jadwal', $where);
@@ -29,15 +35,17 @@ class ModelJadwal extends CI_Model
     }
     function get_relasi($id = null)
     {
-       $this->db->select('jadwal.*, peserta.username as peserta_name, instruktur.username as instr_name, paket.nama as nama_paket');
+       $this->db->select('jadwal.*, peserta.username as peserta_name, instruktur.username as instr_name, paket.nama as nama_paket, status_jadwal.status as status_nama');
        $this->db->from('jadwal');
        $this->db->join('peserta','peserta.id_peserta = jadwal.id_peserta','inner');
        $this->db->join('instruktur','instruktur.id_instr = jadwal.id_instr','inner');
        $this->db->join('paket','paket.id = jadwal.id','inner');
+       $this->db->join('status_jadwal','status_jadwal.id_stats = jadwal.id_stats','inner');
        if ($id != null) {
          $this->db->where('id_jadwal',$id);
        }
-       return $this->db->get();
+       $query = $this->db->get();
+       return $query;
     }
   
     public function add($post)

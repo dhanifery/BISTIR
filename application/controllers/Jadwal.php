@@ -34,7 +34,7 @@ class Jadwal extends CI_Controller {
      $config['num_links']=1;
 
      $data['total_rows'] = $config['total_rows'];
-     $config['per_page']=7;
+     $config['per_page']=3;
      $config['full_tag_open']='<nav aria-label="Page navigation example"><ul class="pagination">';
      $config['full_tag_close']='</ul></nav>';
 
@@ -65,18 +65,19 @@ class Jadwal extends CI_Controller {
 
 
     // inisialisasi
-     $this->pagination->initialize($config);
+    // $this->pagination->initialize($config);
 
-     $data['judul'] ='Jadwal';
-	 $data['subjudul'] = 'Daftar Jadwal';
-	 $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
-     $data['start'] = $this->uri->segment(3);
-	 $data['Jadwal'] = $this->ModelJadwal->get_relasi()->result();
-     $data['jadwal'] = $this->ModelJadwal->tampil_data($config['per_page'],$data['start'],$data['keyword'])->result_array();
-	 
-	 $this->load->view('admin/admin_header',$data);
-	 $this->load->view('admin/jadwal/tampil_jadwal' ,$data);
-	 $this->load->view('admin/admin_footer', $data);
+    $data['judul'] ='Jadwal';
+    $data['form'] = 'Form Jadwal';
+    $data['subjudul'] = 'Daftar Jadwal';
+    $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
+    $data['start'] = $this->uri->segment(3);
+    $data['row'] = $this->ModelJadwal->get_relasi();
+    $this->db->where('id_stats',1); 
+    $data['jadwal'] = $this->ModelJadwal->tampil_data($config['per_page'],$data['start'],$data['keyword'])->result_array();
+	  $this->load->view('admin/admin_header',$data);
+	  $this->load->view('admin/jadwal/tampil_jadwal' ,$data);
+	  $this->load->view('admin/admin_footer', $data);
 
   	}
 

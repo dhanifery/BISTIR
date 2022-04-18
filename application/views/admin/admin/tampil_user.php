@@ -42,7 +42,7 @@
                                              <h3>Data not found!</h3>
                                         </div>
                                    </td>
-                              </tr>
+                              </tr>  
                          <?php endif; ?>
                          <?php foreach ($anggota as $a){
                               ?>

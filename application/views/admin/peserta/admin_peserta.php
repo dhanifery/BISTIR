@@ -27,9 +27,10 @@
                     <thead>
                          <tr>
                               <th>No</th>
-                              <th>Username</th>
+                              <th>Name</th>
                               <th>Email</th>
                               <th>Jenis Kelamin</th>
+                              <th>Image</th>
                               <th class="text-center">Option</th>
                          </tr>
                     </thead>
@@ -46,12 +47,17 @@
                          <?php foreach ($peserta as $psr){
                               ?>
                               <tr>
-                                   <td><?php echo ++$start?></td>
+                                   <th><?php echo ++$start?></th>
                                    <?php    $psr->id_peserta?>
                                    <td><?php echo $psr->username?></td>
                                    <td><?php echo $psr->email_peserta?></td>
                                    <td width="120px;"><?php echo $psr->JK_peserta?></td>
-                                   <td class="text-center">
+                                   <td width="80px;">
+                                        <picture>
+                                             <img style=" height: 60px; width:100%; border-radius:4px; border: 2px solid;" src="<?= base_url('assets/images/upload/'.$psr->image)?>">
+                                        </picture>                                 
+                                   </td>
+                                   <td class="text-center" style="height: 5rem;">
                                         <a href="<?=site_url('Crud_peserta/edit/'.$psr->id_peserta) ?>" class="btn-edit">
                                              <span class="material-icons-sharp">edit</span>
                                         </a>
@@ -64,9 +70,9 @@
                          <?php } ?>
                     </tbody>
                </table>
-               <h3>Results : <?=$total_rows; ?></h3>
+               <h3>Results : <?=$total_rows; ?></h3>           
           </div>
-          <?php echo $this->pagination->create_links();  ?>
+          <?php echo $this->pagination->create_links();  ?>  
           <!-- RECENT ORDERS END -->
 
           <!-- MODAL START -->
@@ -87,19 +93,26 @@
                               <div class="form-group">
                                    <label>TTL *</label>
                                    <input type="date" name="TTL_peserta" value"" autocomplete="off">
+                                   <span class="error-validasi"><?php echo form_error('TTL_peserta'); ?></span>
                               </div>
                               <div class="form-group">
                                    <label>Email *</label>
                                    <input type="text" name="email_peserta" value="" autocomplete="off">
+                                   <span class="error-validasi"><?php echo form_error('email_peserta'); ?></span>
                               </div>
                               <div class="form-group">
                                    <label>Alamat *</label>
                                    <textarea name="alamat_peserta" rows="2" cols="1"></textarea>
+                              <span class="error-validasi"><?php echo form_error('alamat_peserta'); ?></span>
                               </div>
                               <div class="form-group">
                                    <label>No.telp *</label>
                                    <input type="text" name="no_telp" value=""  autocomplete="off">
                                    <span class="error-validasi"><?php echo form_error('no_telp'); ?></span>
+                              </div>
+                              <div class="form-group">
+                                   <label>Image *</label>
+                                   <input type="file" name="image" value=""  autocomplete="off">
                               </div>
                               <div class="form-group">
                                    <label>Jenis Kelamin *</label>
@@ -110,6 +123,7 @@
                                    </select>
                                    <span class="error-validasi"><?php echo form_error('JK_peserta'); ?></span>
                               </div>
+
                               <div class="form-group">
                                    <input type="submit" name="" value="Save">
                                    <input type="reset" name="" value="Reset">

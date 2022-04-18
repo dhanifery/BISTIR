@@ -31,7 +31,7 @@
                               </form>
                          </div>
                     </div>
-                    <div class="gambar">
+                    <div class="img">
                          <img src="<?= base_url('assets/images/undraw_futuristic_interface_re_0cm6.svg');?> " alt="">
                     </div>
                </div>

@@ -10,7 +10,7 @@
                <h2><?= $subjudul ?></h2>
                <div class="edit-form">
                     <div class="form-input">
-                         <form action="<?= site_url('User/proses') ?>"  method="post">
+                         <form action="<?= site_url('Jadwal/proses') ?>"  method="post">
                               <div class="form-group">
                                    <label>Name *</label>
                                    <input type="hidden" name="id" value="<?= $row->id ?>">

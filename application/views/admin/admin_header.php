@@ -35,7 +35,7 @@
                          <a href="<?= base_url('Crud_instruktur'); ?>"><span class="material-icons-sharp">group</span>
                               <h3>Data Instruktur</h3>
                          </a>
-                         <a href="<?= base_url('Crud_admin'); ?>"><span class="material-icons-sharp">person_outline</span>
+                         <a href="<?= base_url('Crud_admin'); ?>"><span class="material-icons-sharp">groups</span>
                               <h3>Data Admin</h3>
                          </a>
                          <a href="<?= base_url('Paket'); ?>"><span class="material-icons-sharp">category</span>
@@ -43,7 +43,7 @@
                               <!-- <span class="message-count">20</span> -->
                          </a>
                          <p>Data Transaksi</p>
-                         <a href="#"><span class="material-icons-sharp">insights</span>
+                         <a href="<?= base_url('Transaksi')?>"><span class="material-icons-sharp">insights</span>
                               <h3>Data Transaksi</h3>
                          </a>
                          <a href="#"><span class="material-icons-sharp">receipt_long</span>

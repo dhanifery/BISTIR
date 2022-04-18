@@ -35,13 +35,16 @@ class ModelPeserta extends CI_Model
      public function edit($post)
      {
        $params = [
-            'username' =>  $post['username'],
-           'email_peserta' => $post['email_peserta'],
+           'username' =>  $post['username'],
            'alamat_peserta' => $post['alamat_peserta'],
            'no_telp' => $post['no_telp'],
            'TTL_peserta' => $post['TTL_peserta'],
            'JK_peserta' => $post['JK_peserta'],
+
        ];
+       if($post['image'] != null) {
+         $params['image'] = $post['image'];
+       }   
        $this->db->where('id_peserta', $post['id_peserta']);
        $this->db->update('peserta',$params);
      }
@@ -59,9 +62,9 @@ class ModelPeserta extends CI_Model
    {
      return $this->db->get('peserta')->num_rows();
    }
-   function input_data($data,$table)
+   function input_data($data = null)
    {
-      $this->db->insert($table, $data);
+      $this->db->insert('peserta', $data);
    }
 
    function hapus_data($where,$table) {
